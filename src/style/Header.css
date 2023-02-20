@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+}
+
+.header_div {
+  align-items: center;
+  background: #fcdc36;
+  display: flex;
+  height: 10vh;
+  justify-content: space-between;
+  top: 0;
+  width: 100vw;
+}
+
+.header_div_title {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.header_div_title img {
+  margin-left: 12px;
+
+}
+
+
+.header_title {
+  align-items: baseline;
+  color: #41197f;
+  font-size: 1.3em;
+  font-weight: 900;
+  justify-items: center;
+  letter-spacing: 0.105em;
+  margin-bottom: 0;
+  margin-left: 15px;
+  padding: 2px;
+  text-transform: uppercase;
+  width: 60px;
+}
+
+
+.header_btn {
+  background-color: #fcdc36;
+  border: none;
+  margin-right: 12px;
+}
+
+.search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100vw;
+}
+
+.search_background {
+  align-items: center;
+  background-color: #41197f;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+
+}
+
+.search_div_Input {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.search_input {
+  background: white;
+  border: 1px solid #b1b1b1;
+  border-radius: 5px;
+  width: 90vw;
+}
+
+.search_input::placeholder {
+  color: #797d86;
+  font-family: Epilogue , serif;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14px;
+  padding: 20px;
+}
+
+.search_container_radio {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+}
+
+.search_div_radio {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.search_div_radio label {
+  align-items: center;
+  color: white;
+  font-family: Epilogue , serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 9px;
+  margin-left: 20px;
+
+}
+
+.search_radio {
+  accent-color: #fcc436;
+  margin-left: 3px;
+  vertical-align: middle;
+
+}
+
+.search_btn {
+  align-items: center;
+  background: #fcc436;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: Epilogue , serif;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 12px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 60vw;
+
+}
+
