@@ -15,16 +15,16 @@ export default function Drinks() {
   const FIVE = 5;
 
   const submitFilter = ({ target }) => {
-    if (target.className === '') {
-      target.className = 'click';
+    const listFilters = target.parentElement.children;
+    for(let filter of listFilters) {
+      filter.className = '';
+    }
+    target.className = 'filterSelected';
+    if(target.value === 'All'){
+      setRequestDrink([]);
+    }else {
       requestDrinkBySelectedFilter(target.value)
-        .then((drink) => setRequestDrink(drink.drinks));
-      setFilterToggle(false);
-    } else {
-      target.className = '';
-      requestDrinkBySelectedFilter(target.value)
-        .then((drink) => setRequestDrink(drink.drinks));
-      setFilterToggle(true);
+      .then((drink) => setRequestDrink(drink.drinks));
     }
   };
 
@@ -56,16 +56,16 @@ export default function Drinks() {
           }
           <button
             type="button"
+            value="All"
+            className="filterSelected"
             data-testid="All-category-filter"
-            onClick={ () => {
-              setRequestDrink([]);
-            } }
+            onClick={ submitFilter }
           >
             All
 
           </button>
         </div>
-        {(requestDrink.length > 1 && !filterToggle)
+        {(requestDrink.length > 1)
           ? requestDrink.slice(0, TWELVE).map((drink, index) => (
             <div key={ drink.idDrink } data-testid={ `${index}-recipe-card` }>
               <NavLink to="/drinks">

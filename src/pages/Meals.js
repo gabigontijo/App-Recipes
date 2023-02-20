@@ -12,20 +12,19 @@ export default function Meals() {
   const FIVE = 5;
 
   const { setTitle, requestMeal, setRecipesData,
-    filters, setFilters, setRequestMeal,
-    setFilterToggle, filterToggle } = useContext(ContextRecipes);
+    filters, setFilters, setRequestMeal } = useContext(ContextRecipes);
 
   const submitFilter = ({ target }) => {
-    if (target.className === '') {
-      target.className = 'click';
+    const listFilters = target.parentElement.children;
+    for(let filter of listFilters) {
+      filter.className = '';
+    }
+    target.className = 'filterSelected';
+    if(target.value === 'All'){
+      setRequestMeal([]);
+    }else {
       requestMealBySelectedFilter(target.value)
-        .then((meal) => setRequestMeal(meal.meals));
-      setFilterToggle(false);
-    } else {
-      target.className = '';
-      requestMealBySelectedFilter(target.value)
-        .then((meal) => setRequestMeal(meal.meals));
-      setFilterToggle(true);
+      .then((meal) => setRequestMeal(meal.meals));
     }
   };
 
@@ -56,17 +55,16 @@ export default function Meals() {
           }
           <button
             type="button"
+            value="All"
+            className="filterSelected"
             data-testid="All-category-filter"
-            className=""
-            onClick={ () => {
-              setRequestMeal([]);
-            } }
+            onClick={ submitFilter }
           >
             All
 
           </button>
         </div>
-        {(requestMeal.length >= 1 && !filterToggle)
+        {(requestMeal.length >= 1)
           ? requestMeal.slice(0, TWELVE).map((meal, index) => (
             <div key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
               <NavLink to={ `/meals/${meal.idMeal}` }>
