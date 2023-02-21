@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
-// import ContextRecipes from '../context/ContextRecipes';
-// import { requestDrinks, requestMeals } from '../service/RequestAPI';
 import shareIcon from '../images/shareIcon.svg';
 
 const SEIS = 6;
@@ -14,6 +11,8 @@ export default function RecipeDetails(props) {
   const [recipe, setRecipe] = useState({});
   const [carousel, setCarousel] = useState([]);
   const [messageCopy, setMessageCopy] = useState(false);
+  const [ingredients, setIngredients] = useState([])
+  const [measures, setMeasures] = useState([])
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -32,7 +31,7 @@ export default function RecipeDetails(props) {
   function renderIngredients(param1) {
     const asArray = Object.entries(recipe);
     const filtered = asArray.filter(([key, value]) => key.includes(param1)
-    && value !== null && value !== '');
+    && value !== null && value.trim() !== '');
     const a = filtered.map((el) => el[1]);
     return a;
   }
@@ -65,14 +64,16 @@ export default function RecipeDetails(props) {
     fetchAPI(location);
     fetchCarousel(location);
   }, [props]);
-
-  const z = renderIngredients('Ingredient');
-  const x = renderIngredients('Measure');
-
+ 
+  useEffect(() => {
+    setIngredients(renderIngredients('Ingredient'));
+    setMeasures(renderIngredients('Measure'));
+  }, [recipe]);
+ 
   const juntaArrays = () => {
     const newArray = [];
-    for (let index = 0; index < x.length; index += 1) {
-      newArray.push(`${x[index]} ${z[index]}`);
+    for (let index = 0; index < measures.length; index += 1) {
+      newArray.push(`${measures[index]} ${ingredients[index]}`);
     }
     return newArray;
   };
@@ -115,8 +116,6 @@ export default function RecipeDetails(props) {
     localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavorite]));
   };
 
-  /* const handleButton = () => {}; */
-
   return (
     <div>
       <img
@@ -130,9 +129,9 @@ export default function RecipeDetails(props) {
           .find((el) => el.includes('str')))] }
       </p>
       <p data-testid="recipe-category">
-        { recipe.strAlcoholic !== null && recipe[(Object.keys(recipe)
+        { recipe.strAlcoholic && recipe[(Object.keys(recipe)
           .find((el) => el.includes('Category')))]
-          + recipe.strAlcoholic}
+          + ` ${recipe.strAlcoholic}`}
       </p>
       {juntaArrays().map((item, index) => (
         <p
