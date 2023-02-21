@@ -12,12 +12,8 @@ export default function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
   const [carousel, setCarousel] = useState([]);
   const [messageCopy, setMessageCopy] = useState(false);
-<<<<<<< HEAD
-
-=======
   const [ingredients, setIngredients] = useState([])
   const [measures, setMeasures] = useState([])
->>>>>>> master
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -65,26 +61,15 @@ export default function RecipeDetails() {
     }
   };
   useEffect(() => {
-<<<<<<< HEAD
     fetchAPI(history.location);
     fetchCarousel(history.location);
   }, [history.location]);
 
-  const z = renderIngredients('Ingredient');
-  const x = renderIngredients('Measure');
-
-=======
-    const { location } = props;
-    fetchAPI(location);
-    fetchCarousel(location);
-  }, [props]);
- 
   useEffect(() => {
     setIngredients(renderIngredients('Ingredient'));
     setMeasures(renderIngredients('Measure'));
   }, [recipe]);
- 
->>>>>>> master
+
   const juntaArrays = () => {
     const newArray = [];
     for (let index = 0; index < measures.length; index += 1) {
