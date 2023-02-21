@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import DrinksInProgress from '../components/DrinksInProgress';
+import Header from '../components/Header';
 import MealsInProgress from '../components/MealsInProgress';
 
 export default function RecipeInProgress() {
@@ -9,6 +10,7 @@ export default function RecipeInProgress() {
 
   return (
     <div>
+       <Header />
       {locationType === 'meals'
       && (
         <div>

@@ -23,12 +23,14 @@ function App() {
         <Route
           exact
           path="/meals/:id"
-          render={ (props) => <RecipeDetails { ...props } /> }
+          component={ RecipeDetails }
+          // render={ (props) => <RecipeDetails { ...props } /> }
         />
         <Route
           exact
           path="/drinks/:id"
-          render={ (props) => <RecipeDetails { ...props } /> }
+          component={ RecipeDetails }
+          // render={ (props) => <RecipeDetails { ...props } /> }
         />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />

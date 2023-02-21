@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
-// import ContextRecipes from '../context/ContextRecipes';
-// import { requestDrinks, requestMeals } from '../service/RequestAPI';
 import shareIcon from '../images/shareIcon.svg';
+import Header from './Header';
 
 const SEIS = 6;
 const copy = require('clipboard-copy');
 
-export default function RecipeDetails(props) {
+export default function RecipeDetails() {
   const history = useHistory();
   const [recipe, setRecipe] = useState({});
   const [carousel, setCarousel] = useState([]);
   const [messageCopy, setMessageCopy] = useState(false);
+
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -61,10 +60,9 @@ export default function RecipeDetails(props) {
     }
   };
   useEffect(() => {
-    const { location } = props;
-    fetchAPI(location);
-    fetchCarousel(location);
-  }, [props]);
+    fetchAPI(history.location);
+    fetchCarousel(history.location);
+  }, [history.location]);
 
   const z = renderIngredients('Ingredient');
   const x = renderIngredients('Measure');
@@ -79,19 +77,15 @@ export default function RecipeDetails(props) {
 
   const buttonShare = async () => {
     setMessageCopy(true);
-    const { location } = props;
-    const { pathname } = location;
-    const url = `http://localhost:3000${pathname}`;
+    const url = `http://localhost:3000${history.location.pathname}`;
     const messageSaved = await copy(url);
     return messageSaved;
   };
 
   const favoriteButton = () => {
-    const { location } = props;
-    const { pathname } = location;
     const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
     let newFavorite = [];
-    if (pathname.includes('meals')) {
+    if (history.location.pathname.includes('meals')) {
       newFavorite = {
         id: recipe.idMeal,
         type: 'meal',
@@ -101,7 +95,7 @@ export default function RecipeDetails(props) {
         name: recipe.strMeal,
         image: recipe.strMealThumb,
       };
-    } if (pathname.includes('drinks')) {
+    } if (history.location.pathname.includes('drinks')) {
       newFavorite = {
         id: recipe.idDrink,
         type: 'drink',
@@ -115,10 +109,11 @@ export default function RecipeDetails(props) {
     localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavorite]));
   };
 
-  /* const handleButton = () => {}; */
-
   return (
     <div>
+   <div>
+    <Header />
+   </div>
       <img
         src={ recipe[(Object.keys(recipe)
           .find((el) => el.includes('Thumb')))] }

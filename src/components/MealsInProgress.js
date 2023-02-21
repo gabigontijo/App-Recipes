@@ -7,6 +7,7 @@ import IngredientProgress from './IngredientsProgress';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
+import Header from './Header';
 
 const copy = require('clipboard-copy');
 
@@ -99,7 +100,7 @@ export default function MealsInProgress() {
 
   return (
     <div>
-
+      
       <div>
         <img
           data-testid="recipe-photo"
