@@ -9,8 +9,7 @@ import Recipes from './Recipes';
 
 export default function Drinks() {
   const { setTitle, setRecipesData,
-    requestDrink, setFilters, filters, setRequestDrink,
-    setFilterToggle, filterToggle } = useContext(ContextRecipes);
+    requestDrink, setFilters, filters, setRequestDrink } = useContext(ContextRecipes);
   const TWELVE = 12;
   const FIVE = 5;
 

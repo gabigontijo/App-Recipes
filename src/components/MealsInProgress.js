@@ -99,7 +99,6 @@ export default function MealsInProgress() {
 
   return (
     <div>
-
       <div>
         <img
           data-testid="recipe-photo"
@@ -118,7 +117,6 @@ export default function MealsInProgress() {
         {message && <p>Link copied!</p>}
         <button
           type="button"
-          // data-testid="favorite-btn"
           onClick={ favoriteButton }
         >
           <img

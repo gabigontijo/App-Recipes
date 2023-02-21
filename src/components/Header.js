@@ -34,6 +34,11 @@ export default function Header() {
               alt="profile icon"
             />
           </button>
+          <button
+          type="button"
+          onClick={ () => {
+            history.goBack();
+          } }>Back</button>
           {
             (title === 'Done Recipes'
         || title === 'Favorite Recipes'
