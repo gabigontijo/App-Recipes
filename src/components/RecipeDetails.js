@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import Header from './Header';
 
 const SEIS = 6;
 const copy = require('clipboard-copy');
-
 export default function RecipeDetails() {
   const history = useHistory();
   const [recipe, setRecipe] = useState({});
@@ -14,6 +15,7 @@ export default function RecipeDetails() {
   const [messageCopy, setMessageCopy] = useState(false);
   const [ingredients, setIngredients] = useState([])
   const [measures, setMeasures] = useState([])
+  const [favorite, setFavorite] = useState(false);
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -85,31 +87,56 @@ export default function RecipeDetails() {
     return messageSaved;
   };
 
-  const favoriteButton = () => {
+  const newFavoriteMeal = {
+    id: recipe.idMeal,
+    type: 'meal',
+    nationality: recipe.strArea,
+    category: recipe.strCategory,
+    alcoholicOrNot: '',
+    name: recipe.strMeal,
+    image: recipe.strMealThumb,
+  };
+
+  const newFavoriteDrink = {
+    id: recipe.idDrink,
+    type: 'drink',
+    nationality: '',
+    category: recipe.strCategory,
+    alcoholicOrNot: recipe.strAlcoholic,
+    name: recipe.strDrink,
+    image: recipe.strDrinkThumb,
+  };
+
+  const checkFavMeal = () => {
     const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    let newFavorite = [];
-    if (history.location.pathname.includes('meals')) {
-      newFavorite = {
-        id: recipe.idMeal,
-        type: 'meal',
-        nationality: recipe.strArea,
-        category: recipe.strCategory,
-        alcoholicOrNot: '',
-        name: recipe.strMeal,
-        image: recipe.strMealThumb,
-      };
-    } if (history.location.pathname.includes('drinks')) {
-      newFavorite = {
-        id: recipe.idDrink,
-        type: 'drink',
-        nationality: '',
-        category: recipe.strCategory,
-        alcoholicOrNot: recipe.strAlcoholic,
-        name: recipe.strDrink,
-        image: recipe.strDrinkThumb,
-      };
+    if (!favorite.some((fav) => fav.id === recipe.idMeal)) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavoriteMeal]));
+      setFavorite(true);
+    } else {
+      const favoriteRemove = favorite.filter((fav) => fav.id !== recipe.idMeal);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRemove));
+      setFavorite(false);
     }
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavorite]));
+  }
+
+  const checkFavDrink = () => {
+    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
+    if (!favorite.some((fav) => fav.id === recipe.idDrink)) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavoriteDrink]));
+      setFavorite(true);
+    } else {
+      const favoriteRemove = favorite.filter((fav) => fav.id !== recipe.idDrink);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRemove));
+      setFavorite(false);
+    }
+  }
+
+  const favoriteButton = () => {
+    if (history.location.pathname.includes('meals')) {
+      checkFavMeal();
+      } if (history.location.pathname.includes('drinks')) {
+      checkFavDrink()
+    }
   };
 
   return (
@@ -177,13 +204,17 @@ export default function RecipeDetails() {
         <img src={ shareIcon } alt="icone" />
       </button>
       <button
-        data-testid="favorite-btn"
-        className="favorite-button"
-        type="button"
-        onClick={ favoriteButton }
-      >
-        Favoritar
-      </button>
+       className="favorite-button"
+          type="button"
+          onClick={ favoriteButton }
+        >
+          <img
+            data-testid="favorite-btn"
+            src={ (favorite
+              ? blackHeartIcon : whiteHeartIcon) }
+            alt="iconeHeart"
+          />
+        </button>
       {messageCopy === true && <p>Link copied!</p>}
     </div>
   );
