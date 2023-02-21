@@ -70,6 +70,11 @@ export default function RecipeDetails() {
   useEffect(() => {
     setIngredients(renderIngredients('Ingredient'));
     setMeasures(renderIngredients('Measure'));
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
+    const idRecipe = recipe.idDrink ? recipe.idDrink : recipe.idMeal;
+    if(favorites[idRecipe]){
+      setFavorite(true);
+    }
   }, [recipe]);
 
   const juntaArrays = () => {
@@ -92,7 +97,9 @@ export default function RecipeDetails() {
     if (history.location.pathname.includes('meals')) {
       if(favorites[recipe.idMeal]){
         delete favorites[recipe.idMeal];
+        setFavorite(false);
       }else{
+        setFavorite(true);
         favorites[recipe.idMeal] = {
           id: recipe.idMeal,
           type: 'meal',
@@ -106,7 +113,9 @@ export default function RecipeDetails() {
     } if (history.location.pathname.includes('drinks')) {
       if(favorites[recipe.idDrink]){
         delete favorites[recipe.idDrink];
+        setFavorite(false);
       }else{
+        setFavorite(true);
         favorites[recipe.idDrink] = {
           id: recipe.idDrink,
           type: 'drink',
