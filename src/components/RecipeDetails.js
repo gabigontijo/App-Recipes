@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import Header from './Header';
 
 const SEIS = 6;
 const copy = require('clipboard-copy');
-
 export default function RecipeDetails() {
   const history = useHistory();
   const [recipe, setRecipe] = useState({});
@@ -14,6 +15,7 @@ export default function RecipeDetails() {
   const [messageCopy, setMessageCopy] = useState(false);
   const [ingredients, setIngredients] = useState([])
   const [measures, setMeasures] = useState([])
+  const [favorite, setFavorite] = useState(false);
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -68,6 +70,11 @@ export default function RecipeDetails() {
   useEffect(() => {
     setIngredients(renderIngredients('Ingredient'));
     setMeasures(renderIngredients('Measure'));
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
+    const idRecipe = recipe.idDrink ? recipe.idDrink : recipe.idMeal;
+    if(favorites[idRecipe]){
+      setFavorite(true);
+    }
   }, [recipe]);
 
   const juntaArrays = () => {
@@ -90,7 +97,9 @@ export default function RecipeDetails() {
     if (history.location.pathname.includes('meals')) {
       if(favorites[recipe.idMeal]){
         delete favorites[recipe.idMeal];
+        setFavorite(false);
       }else{
+        setFavorite(true);
         favorites[recipe.idMeal] = {
           id: recipe.idMeal,
           type: 'meal',
@@ -104,7 +113,9 @@ export default function RecipeDetails() {
     } if (history.location.pathname.includes('drinks')) {
       if(favorites[recipe.idDrink]){
         delete favorites[recipe.idDrink];
+        setFavorite(false);
       }else{
+        setFavorite(true);
         favorites[recipe.idDrink] = {
           id: recipe.idDrink,
           type: 'drink',
@@ -184,13 +195,17 @@ export default function RecipeDetails() {
         <img src={ shareIcon } alt="icone" />
       </button>
       <button
-        data-testid="favorite-btn"
-        className="favorite-button"
-        type="button"
-        onClick={ favoriteButton }
-      >
-        Favoritar
-      </button>
+       className="favorite-button"
+          type="button"
+          onClick={ favoriteButton }
+        >
+          <img
+            data-testid="favorite-btn"
+            src={ (favorite
+              ? blackHeartIcon : whiteHeartIcon) }
+            alt="iconeHeart"
+          />
+        </button>
       {messageCopy === true && <p>Link copied!</p>}
     </div>
   );
