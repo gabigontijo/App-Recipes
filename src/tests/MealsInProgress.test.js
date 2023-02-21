@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../helpers/RenderWithRouter';
 
-const favoriteMeal = [{
+const favoriteMeal = { 52771: {
   id: '52771',
   type: 'meal',
   nationality: 'Italian',
@@ -13,7 +13,7 @@ const favoriteMeal = [{
   alcoholicOrNot: '',
   name: 'Spicy Arrabiata Penne',
   image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-}];
+}};
 
 const doneMeal = [
   {

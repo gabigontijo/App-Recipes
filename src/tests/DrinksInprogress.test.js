@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from '../helpers/RenderWithRouter';
 
-const favoriteDrink = [{
+const favoriteDrink = { 178319: {
   id: '178319',
   type: 'drink',
   nationality: '',
@@ -13,7 +13,7 @@ const favoriteDrink = [{
   alcoholicOrNot: 'Alcoholic',
   name: 'Aquamarine',
   image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-}];
+}};
 
 const doneDrink = [
   {

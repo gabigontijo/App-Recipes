@@ -302,7 +302,7 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
         "image": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
       };
 
-      expect(favoriteRecipes[0]).to.deep.equal(expectedFavoriteRecipe);
+      expect(favoriteRecipes[52771]).to.deep.equal(expectedFavoriteRecipe);
     });
   });
 
@@ -363,7 +363,7 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
         "image": "https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg",
       };
 
-      expect(favoriteRecipes[0]).to.deep.equal(expectedFavoriteRecipe);
+      expect(favoriteRecipes[178319]).to.deep.equal(expectedFavoriteRecipe);
     });
   });
 
@@ -404,8 +404,8 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
 
     cy.get('[data-testid="favorite-btn"]').click().then(() => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      const expectedFavoriteRecipes = [
-        {
+      const expectedFavoriteRecipes = {
+        52771: {
           id: '52771',
           type: 'meal',
           nationality: 'Italian',
@@ -414,7 +414,7 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
           name: 'Spicy Arrabiata Penne',
           image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
         },
-      ];
+      };
 
       expect(favoriteRecipes).to.deep.eq(expectedFavoriteRecipes);
       localStorage.clear();
@@ -430,8 +430,8 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
 
     cy.get('[data-testid="favorite-btn"]').click().then(() => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      const expectedFavoriteRecipes = [
-        {
+      const expectedFavoriteRecipes = {
+        178319: {
           id: '178319',
           type: 'drink',
           nationality: '',
@@ -440,7 +440,7 @@ describe('41 - Desenvolva a lógica de favoritar e compartilhar. A lógica da te
           name: 'Aquamarine',
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         },
-      ];
+      };
 
       expect(favoriteRecipes).to.deep.eq(expectedFavoriteRecipes);
       localStorage.clear();
