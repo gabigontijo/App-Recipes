@@ -86,30 +86,37 @@ export default function RecipeDetails() {
   };
 
   const favoriteButton = () => {
-    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    let newFavorite = [];
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
     if (history.location.pathname.includes('meals')) {
-      newFavorite = {
-        id: recipe.idMeal,
-        type: 'meal',
-        nationality: recipe.strArea,
-        category: recipe.strCategory,
-        alcoholicOrNot: '',
-        name: recipe.strMeal,
-        image: recipe.strMealThumb,
-      };
+      if(favorites[recipe.idMeal]){
+        delete favorites[recipe.idMeal];
+      }else{
+        favorites[recipe.idMeal] = {
+          id: recipe.idMeal,
+          type: 'meal',
+          nationality: recipe.strArea,
+          category: recipe.strCategory,
+          alcoholicOrNot: '',
+          name: recipe.strMeal,
+          image: recipe.strMealThumb,
+        };
+      }
     } if (history.location.pathname.includes('drinks')) {
-      newFavorite = {
-        id: recipe.idDrink,
-        type: 'drink',
-        nationality: '',
-        category: recipe.strCategory,
-        alcoholicOrNot: recipe.strAlcoholic,
-        name: recipe.strDrink,
-        image: recipe.strDrinkThumb,
-      };
+      if(favorites[recipe.idDrink]){
+        delete favorites[recipe.idDrink];
+      }else{
+        favorites[recipe.idDrink] = {
+          id: recipe.idDrink,
+          type: 'drink',
+          nationality: '',
+          category: recipe.strCategory,
+          alcoholicOrNot: recipe.strAlcoholic,
+          name: recipe.strDrink,
+          image: recipe.strDrinkThumb,
+        };
+      }
     }
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavorite]));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
   };
 
   return (

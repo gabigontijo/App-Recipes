@@ -3,8 +3,8 @@
 const { getId } = require('../utils/getId');
 
 describe('Favorite recipes screen', () => {
-  const favoriteRecipes = [
-    {
+  const favoriteRecipes = {
+    52771: {
       id: '52771',
       type: 'meal',
       nationality: 'Italian',
@@ -13,7 +13,7 @@ describe('Favorite recipes screen', () => {
       name: 'Spicy Arrabiata Penne',
       image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
     },
-    {
+    178319: {
       id: '178319',
       type: 'drink',
       nationality: '',
@@ -22,7 +22,7 @@ describe('Favorite recipes screen', () => {
       name: 'Aquamarine',
       image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
     },
-  ];
+  };
 
   beforeEach(() => {
     cy.visit('http://localhost:3000/favorite-recipes', {
@@ -137,7 +137,7 @@ describe('Favorite recipes screen', () => {
 
       cy.get('[data-testid="0-horizontal-favorite-btn"]').click();
       cy.window().then((win) => {
-        expect(JSON.parse(win.localStorage.getItem('favoriteRecipes'))).to.deep.eq([]);
+        expect(JSON.parse(win.localStorage.getItem('favoriteRecipes'))).to.deep.eq({});
       });
     });
   });

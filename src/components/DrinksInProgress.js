@@ -39,8 +39,8 @@ export default function DrinksInProgress() {
   }, []);
 
   useEffect(() => {
-    const favoritesDrinks = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    if (favoritesDrinks.some((fav) => fav.id === drink.idDrink)) {
+    const favoritesDrinks = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
+    if (favoritesDrinks[drink.idDrink]) {
       setFavoriteIcon(true);
     }
   }, [drink]);
@@ -86,13 +86,14 @@ export default function DrinksInProgress() {
     image: drink.strDrinkThumb };
 
   const favoriteButton = () => {
-    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    if (!favorite.some((fav) => fav.id === drink.idDrink)) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavorite]));
+    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
+    if (!favorite[drink.idDrink]) {
+      favorite[drink.idDrink] = newFavorite;
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
       setFavoriteIcon(true);
     } else {
-      const favoriteRemove = favorite.filter((fav) => fav.id !== drink.idDrink);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRemove));
+      delete favorite[drink.idDrink];
+      localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
       setFavoriteIcon(false);
     }
   };

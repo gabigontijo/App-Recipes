@@ -25,7 +25,7 @@ export default function Header() {
             className="header_btn"
             type="button"
             onClick={ () => {
-              history.push('./profile');
+              history.push('/profile');
             } }
           >
             <img
