@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 import { saveUserLocalStorage } from '../service/LocalStorage';
 import '../style/Login.css';
@@ -8,17 +10,43 @@ export default function Login() {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [disabled, setDisabled] = useState(true);
+  const [showMsgEmail, setShowMsgEmail] = useState(false);
+  const [showMsgPassword, setShowMsgPassword] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
 
   useEffect(() => {
-    setDisabled(true);
+    if (password.length === 0 && email.length === 0) {
+      setDisableButton(true);
+    } else {
+      setDisableButton(false);
+    }
     const regexEmail = (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g).test(email);
     const SIX = 6;
     const validatePassword = password.length > SIX;
-    if (regexEmail && validatePassword) {
-      setDisabled(false);
+    if (!regexEmail && email.length > 0) {
+      setShowMsgEmail(true);
+    } else {
+      setShowMsgEmail(false);
     }
-  }, [password, email]);
+
+    if (!validatePassword && password.length > 0) {
+      setShowMsgPassword(true);
+    } else {
+      setShowMsgPassword(false);
+    }
+  }, [password, email, showMsgEmail, showMsgPassword]);
+
+  const clickEnter = () => {
+    if (showMsgEmail || showMsgPassword || disableButton) {
+      toast('Preencha os campos corretamente!', {
+        type: 'error',
+        theme: 'colored',
+      });
+    } else {
+      saveUserLocalStorage({ email });
+      history.push('./meals');
+    }
+  };
 
   return (
     <div className="login_container">
@@ -37,7 +65,12 @@ export default function Login() {
             onChange={ (e) => setEmail(e.target.value) }
           />
         </label>
-        <label htmlFor="email">
+        {(showMsgEmail)
+         && (
+           <p>
+             Email deve ser no formato /email@test.com/
+           </p>)}
+        <label htmlFor="password">
           <input
             className="login_input"
             placeholder="Password"
@@ -47,20 +80,22 @@ export default function Login() {
             onChange={ (e) => setPassword(e.target.value) }
           />
         </label>
+        {(showMsgPassword)
+         && (
+           <p>
+             Senha deve ter no minimo 6 characteres
+           </p>)}
         <button
           className="login_button"
           type="button"
           data-testid="login-submit-btn"
-          disabled={ disabled }
-          onClick={ () => {
-            saveUserLocalStorage({ email });
-            history.push('./meals');
-          } }
+          onClick={ clickEnter }
         >
           Enter
 
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 }
