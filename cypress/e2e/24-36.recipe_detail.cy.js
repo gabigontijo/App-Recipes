@@ -405,8 +405,8 @@ describe('34 - Salve as receitas favoritas no `localStorage` na chave `favoriteR
 
     cy.get('[data-testid="favorite-btn"]').click().then(() => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      const expectedFavoriteRecipes = [
-        {
+      const expectedFavoriteRecipes = {
+        52771: {
           id: '52771',
           type: 'meal',
           nationality: 'Italian',
@@ -415,7 +415,7 @@ describe('34 - Salve as receitas favoritas no `localStorage` na chave `favoriteR
           name: 'Spicy Arrabiata Penne',
           image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
         },
-      ];
+      };
 
       expect(favoriteRecipes).to.deep.eq(expectedFavoriteRecipes);
     });
@@ -430,8 +430,8 @@ describe('34 - Salve as receitas favoritas no `localStorage` na chave `favoriteR
 
     cy.get('[data-testid="favorite-btn"]').click().then(() => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      const expectedFavoriteRecipes = [
-        {
+      const expectedFavoriteRecipes = {
+        178319: {
           id: '178319',
           type: 'drink',
           nationality: '',
@@ -440,7 +440,7 @@ describe('34 - Salve as receitas favoritas no `localStorage` na chave `favoriteR
           name: 'Aquamarine',
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         },
-      ];
+      };
 
       expect(favoriteRecipes).to.deep.eq(expectedFavoriteRecipes);
     });

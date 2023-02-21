@@ -13,28 +13,27 @@ export default function FavoriteRecipes() {
   const { setTitle } = useContext(ContextRecipes);
   const [favorite, setFavorite] = useState([]);
   const [message, setMessage] = useState(false);
-  // const history = useHistory();
 
   useEffect(() => {
     setTitle('Favorite Recipes');
   }, [setTitle]);
 
   useEffect(() => {
-    const favoriteRecipes = JSON.parse((localStorage.getItem('favoriteRecipes') || '[]'));
+    const favoriteRecipes = JSON.parse((localStorage.getItem('favoriteRecipes') || '{}'));
     setFavorite(favoriteRecipes);
   }, []);
 
   const changeSelectedType = (str) => {
-    const favoriteRecipes = JSON.parse((localStorage.getItem('favoriteRecipes') || '[]'));
-    const filteredFavoriteRecipes = favoriteRecipes.filter((el) => el.type.includes(str));
+    const favoriteRecipes = JSON.parse((localStorage.getItem('favoriteRecipes') || '{}'));
+    const filteredFavoriteRecipes = Object.values(favoriteRecipes).filter((el) => el.type.includes(str));
     setFavorite(filteredFavoriteRecipes);
   };
 
   const unfavoriteRecipe = (event) => {
     const { target: { value } } = event;
-    const removeFavorite = favorite.filter((recipe) => recipe.id !== value);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(removeFavorite));
-    setFavorite(removeFavorite);
+    delete favorite[value];
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
+    setFavorite(favorite);
   };
   return (
 

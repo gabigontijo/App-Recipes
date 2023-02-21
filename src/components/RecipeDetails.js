@@ -87,56 +87,38 @@ export default function RecipeDetails() {
     return messageSaved;
   };
 
-  const newFavoriteMeal = {
-    id: recipe.idMeal,
-    type: 'meal',
-    nationality: recipe.strArea,
-    category: recipe.strCategory,
-    alcoholicOrNot: '',
-    name: recipe.strMeal,
-    image: recipe.strMealThumb,
-  };
-
-  const newFavoriteDrink = {
-    id: recipe.idDrink,
-    type: 'drink',
-    nationality: '',
-    category: recipe.strCategory,
-    alcoholicOrNot: recipe.strAlcoholic,
-    name: recipe.strDrink,
-    image: recipe.strDrinkThumb,
-  };
-
-  const checkFavMeal = () => {
-    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    if (!favorite.some((fav) => fav.id === recipe.idMeal)) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavoriteMeal]));
-      setFavorite(true);
-    } else {
-      const favoriteRemove = favorite.filter((fav) => fav.id !== recipe.idMeal);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRemove));
-      setFavorite(false);
-    }
-  }
-
-  const checkFavDrink = () => {
-    const favorite = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    if (!favorite.some((fav) => fav.id === recipe.idDrink)) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newFavoriteDrink]));
-      setFavorite(true);
-    } else {
-      const favoriteRemove = favorite.filter((fav) => fav.id !== recipe.idDrink);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRemove));
-      setFavorite(false);
-    }
-  }
-
   const favoriteButton = () => {
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes') || '{}');
     if (history.location.pathname.includes('meals')) {
-      checkFavMeal();
-      } if (history.location.pathname.includes('drinks')) {
-      checkFavDrink()
+      if(favorites[recipe.idMeal]){
+        delete favorites[recipe.idMeal];
+      }else{
+        favorites[recipe.idMeal] = {
+          id: recipe.idMeal,
+          type: 'meal',
+          nationality: recipe.strArea,
+          category: recipe.strCategory,
+          alcoholicOrNot: '',
+          name: recipe.strMeal,
+          image: recipe.strMealThumb,
+        };
+      }
+    } if (history.location.pathname.includes('drinks')) {
+      if(favorites[recipe.idDrink]){
+        delete favorites[recipe.idDrink];
+      }else{
+        favorites[recipe.idDrink] = {
+          id: recipe.idDrink,
+          type: 'drink',
+          nationality: '',
+          category: recipe.strCategory,
+          alcoholicOrNot: recipe.strAlcoholic,
+          name: recipe.strDrink,
+          image: recipe.strDrinkThumb,
+        };
+      }
     }
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
   };
 
   return (
