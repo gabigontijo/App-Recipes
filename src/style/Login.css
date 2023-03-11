@@ -1,24 +1,27 @@
 * {
   margin: 0;
   padding: 0;
+
 }
 
 .login_container {
   align-items: center;
-  background-image: url('../images/tomate.png') , url('../images/Background.png');
-  background-position: center , top;
+  background-image: url('../images/food.jpeg');;
+  background-position: center ;
   background-repeat: no-repeat;
-  background-size: 100vw 45vh , 100vw 55vh;
+  background-size: 100vw 30vh ;
+  background-color:#F0FAF0 ;
   display: grid;
   grid-template-areas: 'Logo'
     'space'
     'Login';
-  grid-template-rows: 35vh , 20vh , 45vh;
+  grid-template-rows: 35vh , 25vh , 45vh;
   height: 100vh;
   text-align: center;
 }
 
 .login_Divlogo {
+  background-color:#F0FAF0 ;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -26,14 +29,17 @@
   height: 25vh;
   justify-content: center;
   text-align: center;
+  width: 100vw;
 }
 
 .login_logo {
-  height: 25vh;
+  background-color:#F0FAF0 ;
+  height: 15vh;
 }
 
 
 .login_div {
+  background-color:#F0FAF0 ;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -43,20 +49,22 @@
 }
 
 .login_title {
-  color: #41197f;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 1.3em;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0.165em;
   line-height: 20px;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  margin-top: 1em;
   text-align: center;
   text-transform: uppercase;
 }
 
 .login_input {
-  border: 0.5px solid #41197f;
+  background-color:#F0FAF0 ;
+  border: 0.5px solid #505760;
   border-radius: 5px;
   box-sizing: border-box;
   color: #00000083;
@@ -67,7 +75,7 @@
 }
 
 .login_input::placeholder {
-  color: #41197f;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 14px;
   font-weight: 700;
@@ -76,12 +84,12 @@
 }
 
 .login_input:focus {
-  outline-color: #fcc436;
+  outline-color: #8BA888;
 
 }
 
 .login_button {
-  background: #fcc436;
+  background: #8BA888;
   border: none;
   border-radius: 5px;
   color: white;
@@ -93,10 +101,15 @@
 }
 
 .login_button:disabled {
-  background: #fcc436a1;
+  background: #8BA888;
   border: none;
   border-radius: 5px;
   width: 65vw;
+}
+
+.warn_input {
+  color: #7A818C;
+  font-size: 0.8em;
 }
 
 
@@ -113,10 +126,10 @@
 
   .login_container {
     align-items: center;
-    background-image: url('../images/tomate.png') , url('../images/Background.png');
-    background-position: center , top;
+    background-image: url('../images/food.jpeg');
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 60vw 45vh , 60vw 55vh;
+    background-size: 60vw 45vh;
     display: grid;
     grid-template-areas: 'Logo'
       'space'
@@ -126,8 +139,9 @@
     text-align: center;
   }
 
+
   .login_button {
-    background: #fcc436;
+    background: #8BA888;
     border: none;
     border-radius: 5px;
     color: white;
@@ -137,15 +151,28 @@
     width: 35vw;
   }
 
+  .login_title {
+    color: #505760;
+    font-family: Epilogue , serif;
+    font-size: 1.3em;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.165em;
+    line-height: 20px;
+    margin-top: 1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .login_button:disabled {
-    background: #fcc436a1;
+    background: #4E693F;
     border: none;
     border-radius: 5px;
     width: 35vw;
   }
 
   .login_button:hover {
-    background: #42197f81;
+    background:  #B8D8BE;;
     border: none;
     border-radius: 5px;
     width: 35vw;

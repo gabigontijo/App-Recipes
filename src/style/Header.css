@@ -6,12 +6,12 @@
 .header {
   display: flex;
   flex-direction: column;
-  width: 100vh;
+  background: #8BA888;
+  width: 100vw;
 }
 
 .header_div {
   align-items: center;
-  background: #fcdc36;
   display: flex;
   height: 10vh;
   justify-content: space-between;
@@ -27,14 +27,14 @@
 }
 
 .header_div_title img {
+  height: 50px;
   margin-left: 12px;
 
 }
 
-
 .header_title {
   align-items: baseline;
-  color: #41197f;
+  color: #505760;
   font-size: 1.3em;
   font-weight: 900;
   justify-items: center;
@@ -48,28 +48,32 @@
 
 
 .header_btn {
-  background-color: #fcdc36;
+  background-color: #8BA888;
   border: none;
   margin-right: 12px;
 }
 
+.header_btn img {
+  color: white;
+}
+
 .search {
-  align-items: center;
   display: flex;
-  flex-direction: column;
   height: 120px;
   justify-content: center;
-  margin-top: 15px;
   width: 100vw;
+
 }
 
 .search_background {
-  align-items: center;
-  background-color: #41197f;
-  border-radius: 10px;
-  display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #b1b1b1;
+  display: flex;
   width: 90vw;
+
 
 }
 
@@ -87,7 +91,7 @@
 }
 
 .search_input::placeholder {
-  color: #797d86;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 1em;
   font-style: normal;
@@ -98,6 +102,7 @@
 
 .search_container_radio {
   align-items: center;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,7 +118,7 @@
 
 .search_div_radio label {
   align-items: center;
-  color: white;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 12px;
   font-style: normal;
@@ -124,7 +129,7 @@
 }
 
 .search_radio {
-  accent-color: #fcc436;
+  accent-color: #505760;
   margin-left: 3px;
   vertical-align: middle;
 
@@ -132,10 +137,10 @@
 
 .search_btn {
   align-items: center;
-  background: #fcc436;
+  background: #8BA888;
   border: none;
   border-radius: 5px;
-  color: white;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 1em;
   font-style: normal;
@@ -146,7 +151,7 @@
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
-  width: 60vw;
+  width: 30vw;
 
 }
 

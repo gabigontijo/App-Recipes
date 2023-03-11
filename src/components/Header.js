@@ -4,7 +4,8 @@ import ContextRecipes from '../context/ContextRecipes';
 import avat from '../images/avat.png';
 import lupa from '../images/lupa.png';
 import SearchBar from './SearchBar';
-import imgHeader from '../images/imgHeader.png';
+// import imgHeader from '../images/imgHeader.png';
+import logoHeader from '../images/tasty.png';
 import '../style/Header.css';
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
     <header className="header">
       <div className="header_div">
         <div className="header_div_title">
-          <img src={ imgHeader } alt="imagem logo header" />
+          <img src={ logoHeader } alt="imagem logo header" />
           <h4 data-testid="page-title" className="header_title">{title}</h4>
         </div>
         <div className="header_div_btn">
@@ -34,11 +35,6 @@ export default function Header() {
               alt="profile icon"
             />
           </button>
-          <button
-          type="button"
-          onClick={ () => {
-            history.goBack();
-          } }>Back</button>
           {
             (title === 'Done Recipes'
         || title === 'Favorite Recipes'
@@ -59,7 +55,13 @@ export default function Header() {
                   />
                 </button>
               )
+
           }
+             <button
+          type="button"
+          onClick={ () => {
+            history.goBack();
+          } }>Back</button>
         </div>
       </div>
       {search
