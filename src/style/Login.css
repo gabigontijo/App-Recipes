@@ -6,11 +6,11 @@
 
 .login_container {
   align-items: center;
-  background-image: url('../images/food.jpeg');;
-  background-position: center ;
+  background-color: #f0faf0;
+  background-image: url('../images/food.jpeg');
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 100vw 30vh ;
-  background-color:#F0FAF0 ;
+  background-size: 100vw 30vh;
   display: grid;
   grid-template-areas: 'Logo'
     'space'
@@ -21,8 +21,8 @@
 }
 
 .login_Divlogo {
-  background-color:#F0FAF0 ;
   align-items: center;
+  background-color: #f0faf0;
   display: flex;
   flex-direction: column;
   grid-area: Logo;
@@ -33,14 +33,14 @@
 }
 
 .login_logo {
-  background-color:#F0FAF0 ;
+  background-color: #f0faf0;
   height: 15vh;
 }
 
 
 .login_div {
-  background-color:#F0FAF0 ;
   align-items: center;
+  background-color: #f0faf0;
   display: flex;
   flex-direction: column;
   grid-area: Login;
@@ -63,7 +63,7 @@
 }
 
 .login_input {
-  background-color:#F0FAF0 ;
+  background-color: #f0faf0;
   border: 0.5px solid #505760;
   border-radius: 5px;
   box-sizing: border-box;
@@ -84,12 +84,12 @@
 }
 
 .login_input:focus {
-  outline-color: #8BA888;
+  outline-color: #8ba888;
 
 }
 
 .login_button {
-  background: #8BA888;
+  background: #8ba888;
   border: none;
   border-radius: 5px;
   color: white;
@@ -101,14 +101,14 @@
 }
 
 .login_button:disabled {
-  background: #8BA888;
+  background: #8ba888;
   border: none;
   border-radius: 5px;
   width: 65vw;
 }
 
 .warn_input {
-  color: #7A818C;
+  color: #7a818c;
   font-size: 0.8em;
 }
 
@@ -141,7 +141,7 @@
 
 
   .login_button {
-    background: #8BA888;
+    background: #8ba888;
     border: none;
     border-radius: 5px;
     color: white;
@@ -165,14 +165,14 @@
   }
 
   .login_button:disabled {
-    background: #4E693F;
+    background: #4e693f;
     border: none;
     border-radius: 5px;
     width: 35vw;
   }
 
   .login_button:hover {
-    background:  #B8D8BE;;
+    background: #b8d8be;
     border: none;
     border-radius: 5px;
     width: 35vw;

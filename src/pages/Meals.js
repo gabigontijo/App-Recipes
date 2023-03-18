@@ -6,10 +6,18 @@ import Header from '../components/Header';
 import Recipes from './Recipes';
 import { requestMealBySelectedFilter,
   requestMealFilters, requestMeals } from '../service/RequestAPI';
+import all from '../images/all.png';
+import breakfast from '../images/breakfast.png';
+import beef from '../images/beef.png';
+import dessert from '../images/dessert.png';
+import chicken from '../images/chicken.png';
+import goat from '../images/goat.png';
 
 export default function Meals() {
   const TWELVE = 12;
   const FIVE = 5;
+
+  const imgs = [ beef, breakfast, chicken, dessert, goat];
 
   const { setTitle, requestMeal, setRecipesData,
     filters, setFilters, setRequestMeal } = useContext(ContextRecipes);
@@ -41,7 +49,8 @@ export default function Meals() {
         <div>
           {
             filters.length > 0
-            && filters.slice(0, FIVE).map((category) => (
+            && filters.slice(0, FIVE).map((category, index) => (
+              <div>
               <button
                 key={ category.strCategory }
                 type="button"
@@ -50,8 +59,10 @@ export default function Meals() {
                 onClick={ submitFilter }
                 className=""
               >
-                {category.strCategory}
-              </button>))
+                <img src ={imgs[index]} alt= {category.strCategory}/>
+              </button>
+               <p>{category.strCategory}</p>
+               </div>))
           }
           <button
             type="button"
@@ -60,7 +71,8 @@ export default function Meals() {
             data-testid="All-category-filter"
             onClick={ submitFilter }
           >
-            All
+            <img src={all} alt="all" />
+            <p>All</p>
 
           </button>
         </div>
