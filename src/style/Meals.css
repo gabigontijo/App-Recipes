@@ -1,4 +1,84 @@
+:root {
+
+  --header-color: #5eaa2e;
+
+  --icon-color: #33571c;
+
+  --background-color: #f0faf0;
+
+  --gray-color: #505760;
+}
+
 * {
   margin: 0;
   padding: 0;
+}
+
+.div_meals {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+
+}
+
+.div_categorys {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+
+
+}
+
+.div_categories {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+}
+
+.div_categories button {
+  background-color: transparent;
+  border: none;
+}
+
+.div_categories p, .all_meal {
+  align-items: center;
+  color: var(--gray-color);
+  font-size: 0.7em;
+}
+
+.recipe_cards {
+  display: flex;
+  flex-direction: row;
+}
+
+.meals_cards {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.meals_card {
+  border-radius: 5px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  margin-bottom: 5px;
+  width: 45vw;
+}
+
+.meals_card a {
+  text-decoration: none;
+}
+
+.meals_imgs {
+  width: 45vw;
+
+}
+
+.meals_name {
+  color: var(--gray-color);
+  text-decoration: none;
 }

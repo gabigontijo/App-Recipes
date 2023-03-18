@@ -9,7 +9,7 @@ export default function Recipes() {
   const location = useLocation();
 
   return (
-    <div>
+    <div className="recipe-cards">
       <div>
         {(location.pathname === '/drinks')
         && recipesData.slice(0, TWELVE).map((drink, index) => (
@@ -25,17 +25,18 @@ export default function Recipes() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="meals_cards">
         {(location.pathname === '/meals' && recipesData.length > 0)
         && recipesData.slice(0, TWELVE).map((meal, index) => (
-          <div key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
+          <div className="meals_card" key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
             <NavLink to={ `/meals/${meal.idMeal}` }>
               <img
                 src={ meal.strMealThumb }
                 alt="imagem do meal"
                 data-testid={ `${index}-card-img` }
+                className="meals_imgs"
               />
-              <p data-testid={ `${index}-card-name` }>{meal.strMeal}</p>
+              <p data-testid={ `${index}-card-name` } className="meals_name">{meal.strMeal}</p>
             </NavLink>
           </div>
         ))}

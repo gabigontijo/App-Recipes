@@ -12,6 +12,7 @@ import beef from '../images/beef.png';
 import dessert from '../images/dessert.png';
 import chicken from '../images/chicken.png';
 import goat from '../images/goat.png';
+import '../style/Meals.css';
 
 export default function Meals() {
   const TWELVE = 12;
@@ -45,12 +46,12 @@ export default function Meals() {
   return (
     <div>
       <Header />
-      <div>
-        <div>
+      <div className="div_meals">
+        <div className="div_categorys">
           {
             filters.length > 0
             && filters.slice(0, FIVE).map((category, index) => (
-              <div>
+              <div className="div_categories">
               <button
                 key={ category.strCategory }
                 type="button"
@@ -72,20 +73,21 @@ export default function Meals() {
             onClick={ submitFilter }
           >
             <img src={all} alt="all" />
-            <p>All</p>
+            <p className="all_meal">All</p>
 
           </button>
         </div>
         {(requestMeal.length >= 1)
           ? requestMeal.slice(0, TWELVE).map((meal, index) => (
-            <div key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
-              <NavLink to={ `/meals/${meal.idMeal}` }>
+            <div className="meals_cards" key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
+              <NavLink to={ `/meals/${meal.idMeal}` } className="meals_cards_navlink">
                 <img
                   src={ meal.strMealThumb }
                   alt="imagem do meal"
                   data-testid={ `${index}-card-img` }
+                  className="meals_imgs"
                 />
-                <p data-testid={ `${index}-card-name` }>{meal.strMeal}</p>
+                <p data-testid={ `${index}-card-name` }  className="meals_name">{meal.strMeal}</p>
               </NavLink>
             </div>
           )) : <Recipes />}

@@ -1,3 +1,14 @@
+:root {
+
+  --header-color: #5eaa2e;
+
+  --icon-color: #33571c;
+
+  --background-color: #f0faf0;
+
+  --gray-color: #505760;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +17,7 @@
 
 .login_container {
   align-items: center;
-  background-color: #f0faf0;
+  background-color: var(--background-color);
   background-image: url('../images/food.jpeg');
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +33,7 @@
 
 .login_Divlogo {
   align-items: center;
-  background-color: #f0faf0;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   grid-area: Logo;
@@ -33,14 +44,14 @@
 }
 
 .login_logo {
-  background-color: #f0faf0;
+  background-color: var(--background-color);
   height: 15vh;
 }
 
 
 .login_div {
   align-items: center;
-  background-color: #f0faf0;
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   grid-area: Login;
@@ -49,7 +60,7 @@
 }
 
 .login_title {
-  color: #505760;
+  color: var(--gray-color);
   font-family: Epilogue , serif;
   font-size: 1.3em;
   font-style: italic;
@@ -63,8 +74,8 @@
 }
 
 .login_input {
-  background-color: #f0faf0;
-  border: 0.5px solid #505760;
+  background-color: var(--background-color);
+  border: 0.5px solid var(--gray-color);
   border-radius: 5px;
   box-sizing: border-box;
   color: #00000083;
@@ -75,7 +86,7 @@
 }
 
 .login_input::placeholder {
-  color: #505760;
+  color: var(--gray-color);
   font-family: Epilogue , serif;
   font-size: 14px;
   font-weight: 700;
@@ -89,7 +100,7 @@
 }
 
 .login_button {
-  background: #8ba888;
+  background: var(--icon-color);
   border: none;
   border-radius: 5px;
   color: white;
@@ -141,7 +152,7 @@
 
 
   .login_button {
-    background: #8ba888;
+    background: var(--icon-color);
     border: none;
     border-radius: 5px;
     color: white;
@@ -152,7 +163,7 @@
   }
 
   .login_title {
-    color: #505760;
+    color: var(--gray-color);
     font-family: Epilogue , serif;
     font-size: 1.3em;
     font-style: italic;
@@ -165,7 +176,7 @@
   }
 
   .login_button:disabled {
-    background: #4e693f;
+    background: var(--icon-color);
     border: none;
     border-radius: 5px;
     width: 35vw;
