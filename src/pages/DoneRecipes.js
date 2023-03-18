@@ -93,7 +93,10 @@ export default function DoneRecipes() {
                   ? `${el.nationality} - ${el.category}` : el.alcoholicOrNot }
 
               </p>
-              <p data-testid={ `${index}-horizontal-done-date` }>{el.doneDate}</p>
+              
+              {el.doneDate.map((date, idx) => (
+                <p data-testid={ `${idx}-horizontal-done-date` }>{date}</p>
+              ))}
               {message && <p>Link copied!</p>}
               <button
                 type="button"

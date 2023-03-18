@@ -55,13 +55,26 @@ export default function DrinksInProgress() {
     alcoholicOrNot: drink.strAlcoholic,
     name: drink.strDrink,
     image: drink.strDrinkThumb,
-    doneDate: inDate.toISOString(),
+    doneDate: [inDate.toISOString()],
     tags: ((drink.strTags !== null && drink.strTags) ? drink.strTags.split(',') : []),
   };
 
   const handleBtnFinalizar = () => {
     const doneRecipe = JSON.parse(localStorage.getItem('doneRecipes') || '[]');
-    saveDoneRecipesLocalStorage([...doneRecipe, saveLocalStorage]);
+    let find = false;
+    for(let recipe of doneRecipe){
+      if(recipe.id === saveLocalStorage.id){
+        recipe.doneDate.push(saveLocalStorage.doneDate[0])
+        find = true;
+      }
+    }
+
+    if(find){
+      saveDoneRecipesLocalStorage(doneRecipe);
+    } else{
+      saveDoneRecipesLocalStorage([...doneRecipe, saveLocalStorage]);
+    }
+
     filterRecipeDone();
     history.push('/done-recipes');
   };
@@ -131,18 +144,17 @@ export default function DrinksInProgress() {
 
         <p data-testid="recipe-category">{drink.strCategory}</p>
         <p data-testid="instructions">{drink.strInstructions}</p>
+        <IngredientProgress recipeType={ drink } />
+        <button
+          type="button"
+          // className="finish-button"
+          data-testid="finish-recipe-btn"
+          disabled={ disabledBtnFinalizar }
+          onClick={ handleBtnFinalizar }
+          >
+          Finalizar
+        </button>
       </div>
-      <IngredientProgress recipeType={ drink } />
-      <button
-        type="button"
-        className="finish-button"
-        data-testid="finish-recipe-btn"
-        disabled={ disabledBtnFinalizar }
-        onClick={ handleBtnFinalizar }
-      >
-        Finalizar
-
-      </button>
 
     </div>
   );
