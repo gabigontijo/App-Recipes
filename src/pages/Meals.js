@@ -13,6 +13,7 @@ import dessert from '../images/dessert.png';
 import chicken from '../images/chicken.png';
 import goat from '../images/goat.png';
 import '../style/Meals.css';
+import '../style/Footer.css';
 
 export default function Meals() {
   const TWELVE = 12;
@@ -51,7 +52,7 @@ export default function Meals() {
           {
             filters.length > 0
             && filters.slice(0, FIVE).map((category, index) => (
-              <div className="div_categories">
+              <div className="div_categories" key={`${index}-div`}>
               <button
                 key={ category.strCategory }
                 type="button"
@@ -60,9 +61,9 @@ export default function Meals() {
                 onClick={ submitFilter }
                 className=""
               >
-                <img src ={imgs[index]} alt= {category.strCategory}/>
+                <img src ={imgs[index]} key={`${index}-img`} alt= {category.strCategory}/>
               </button>
-               <p>{category.strCategory}</p>
+               <p key={`${index}-name`} >{category.strCategory}</p>
                </div>))
           }
           <button
@@ -80,14 +81,15 @@ export default function Meals() {
         {(requestMeal.length >= 1)
           ? requestMeal.slice(0, TWELVE).map((meal, index) => (
             <div className="meals_cards" key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
-              <NavLink to={ `/meals/${meal.idMeal}` } className="meals_cards_navlink">
+              <NavLink to={ `/meals/${meal.idMeal}` }  key={ `${index}-navlink` } className="meals_cards_navlink">
                 <img
                   src={ meal.strMealThumb }
                   alt="imagem do meal"
                   data-testid={ `${index}-card-img` }
                   className="meals_imgs"
+                  key={ `${index}-img` }
                 />
-                <p data-testid={ `${index}-card-name` }  className="meals_name">{meal.strMeal}</p>
+                <p data-testid={ `${index}-card-name` }  key={ `${index}-name` }  className="meals_name">{meal.strMeal}</p>
               </NavLink>
             </div>
           )) : <Recipes />}

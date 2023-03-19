@@ -42,7 +42,7 @@
 .header_title {
   align-items: baseline;
   color: var(--icon-color);
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 900;
   justify-items: center;
   letter-spacing: 0.105em;
@@ -71,7 +71,7 @@
 }
 
 .back-btn img {
-  width: 30px;
+  width: 20px;
 }
 
 .header_btn img {
@@ -162,7 +162,7 @@
   border-radius: 5px;
   color: white;
   font-family: Epilogue , serif;
-  font-size: 1em;
+  font-size: 0.7em;
   font-style: normal;
   font-weight: 700;
   letter-spacing: 0.03em;

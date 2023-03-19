@@ -1,0 +1,36 @@
+:root {
+
+  --header-color: #5eaa2e;
+
+  --icon-color: #33571c;
+
+  --background-color: #f0faf0;
+
+  --gray-color: #505760;
+
+  --teste: #94da948c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Footer {
+  background-color: var(--header-color);
+  display: flex;
+  height: 55px;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.Footer-btn {
+  background-color: transparent;
+  border: none;
+  margin: 15px;
+}
+
+.Footer-img {
+  width: 2em;
+}
