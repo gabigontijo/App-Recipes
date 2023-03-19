@@ -59,7 +59,8 @@ export default function IngredientProgress(props) {
   const juntaArrays = () => {
     const newArray = [];
     for (let index = 0; index < ingredientsName.length; index += 1) {
-      newArray.push(`${IngredientsQuantity[index]} ${ingredientsName[index]}`);
+      const quantity = IngredientsQuantity[index] ? IngredientsQuantity[index] : "";
+      newArray.push(`${quantity} ${ingredientsName[index]}`);
     }
     return newArray;
   };
