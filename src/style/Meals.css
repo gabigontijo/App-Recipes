@@ -17,7 +17,7 @@
   padding: 0;
 }
 
-.div_meals {
+.div_meals, .div_drinks {
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .div_categorys {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -39,7 +39,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 15vw;
+  width: 12vw;
 }
 
 .div_categories button {
@@ -47,7 +47,7 @@
   border: none;
 }
 
-.div_categories p, .all_meal {
+.div_categories p, .all_meal, .all_drink {
   align-items: center;
   color: var(--gray-color);
   font-size: 0.7em;
@@ -58,7 +58,7 @@
   flex-direction: row;
 }
 
-.meals_cards {
+.meals_cards, .drinks_cards {
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
@@ -66,7 +66,7 @@
 
 }
 
-.meals_card {
+.meals_card, .drinks_card {
   align-items: flex-end;
   background-color: whitesmoke;
   border-radius: 5px;
@@ -77,25 +77,85 @@
   width: 45vw;
 }
 
-.meals_card a {
+.meals_card a, .drinks_card a {
   height: 25vh;
   text-decoration: none;
 }
 
-.meals_imgs {
+.meals_imgs, .drinks_imgs {
   width: 45vw;
 }
 
-.meals_name {
-
-  /* border-bottom: 2px solid var(--icon-color); */
+.meals_name, .drinks_name {
   box-sizing: border-box;
-  color: var(--gray-color);
+  color: var(--icon-color);
   font-family: Epilogue , serif;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 700;
   letter-spacing: 0.02em;
   margin-left: 5px;
   margin-top: 10px;
   text-decoration: none;
+}
+
+.footer_space {
+  height: 6vh;
+}
+
+@media screen  and ( min-width : 1200px ) {
+
+  .meals_card, .drinks_card {
+    align-items: flex-end;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    margin-bottom: 100px;
+    width: 20vw;
+  }
+
+  .meals_card a, .drinks_card a {
+    height: 35vh;
+    text-decoration: none;
+  }
+
+  .meals_imgs, .drinks_imgs {
+    width: 20vw;
+  }
+
+  .meals_name, .drinks_name {
+    box-sizing: border-box;
+    color: var(--icon-color);
+    font-family: Epilogue , serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-left: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .footer_space {
+    background-color: var(--background-color);
+    height: 6vh;
+  }
+
+  .div_categorys {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+  }
+
+  .div_categories {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+  }
+
 }

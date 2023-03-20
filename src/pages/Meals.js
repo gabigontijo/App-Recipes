@@ -94,6 +94,7 @@ export default function Meals() {
             </div>
           )) : <Recipes />}
       </div>
+      <div className="footer_space"></div>
       <Footer />
     </div>
 

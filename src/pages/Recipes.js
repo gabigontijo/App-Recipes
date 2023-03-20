@@ -10,18 +10,19 @@ export default function Recipes() {
 
   return (
     <div className="recipe-cards">
-      <div>
+      <div className="drinks_cards">
         {(location.pathname === '/drinks')
         && recipesData.slice(0, TWELVE).map((drink, index) => (
-          <div key={ drink.idDrink } data-testid={ `${index}-recipe-card` }>
+          <div  className="drinks_card" key={ drink.idDrink } data-testid={ `${index}-recipe-card2` }>
             <NavLink to={ `/drinks/${drink.idDrink}` }  key={ `${index}-navlink2` } >
               <img
                 src={ drink.strDrinkThumb }
                 alt="imagem do drink"
                 data-testid={ `${index}-card-img` }
                 key={ `${index}-img2` }
+                className="drinks_imgs"
               />
-              <p data-testid={ `${index}-card-name` }   key={ `${index}-name2` }>{drink.strDrink}</p>
+              <p className="drinks_name" data-testid={ `${index}-card-name` }   key={ `${index}-name2` }>{drink.strDrink}</p>
             </NavLink>
           </div>
         ))}
