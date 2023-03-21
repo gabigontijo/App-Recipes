@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 import { saveUserLocalStorage } from '../service/LocalStorage';
 import '../style/Login.css';
-import logoRecipesApp from '../images/logoRecipesApp.png';
+import logoRecipesApp from '../images/tasty.png'
 
 export default function Login() {
   const history = useHistory();
@@ -67,8 +67,8 @@ export default function Login() {
         </label>
         {(showMsgEmail)
          && (
-           <p>
-             Email deve ser no formato /email@test.com/
+           <p className="warn_input">
+             Email deve ser no formato 'email@test.com'
            </p>)}
         <label htmlFor="password">
           <input
@@ -82,8 +82,8 @@ export default function Login() {
         </label>
         {(showMsgPassword)
          && (
-           <p>
-             Senha deve ter no minimo 6 characteres
+           <p className="warn_input">
+             Password deve ter no mínimo 6 caracteres
            </p>)}
         <button
           className="login_button"

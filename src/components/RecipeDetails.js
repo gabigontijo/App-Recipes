@@ -5,6 +5,13 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import Header from './Header';
+import Ordinary from '../images/ordinary.png'
+import cocktail from '../images/cocktail.png'
+import breakfast from '../images/breakfast.png';
+import beef from '../images/beef.png';
+import dessert from '../images/dessert.png';
+import chicken from '../images/chicken.png';
+import goat from '../images/goat.png';
 
 const SEIS = 6;
 const copy = require('clipboard-copy');
@@ -16,6 +23,8 @@ export default function RecipeDetails() {
   const [ingredients, setIngredients] = useState([])
   const [measures, setMeasures] = useState([])
   const [favorite, setFavorite] = useState(false);
+  const imgs = [Ordinary, cocktail, beef, breakfast, chicken, dessert, goat];
+
   const fetchAPI = async (arg) => {
     const b = arg.pathname.split('/');
     const id = b[2];
@@ -89,6 +98,7 @@ export default function RecipeDetails() {
     setMessageCopy(true);
     const url = `http://localhost:3000${history.location.pathname}`;
     const messageSaved = await copy(url);
+    console.log(recipe)
     return messageSaved;
   };
 

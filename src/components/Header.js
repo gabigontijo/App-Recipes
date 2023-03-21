@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import ContextRecipes from '../context/ContextRecipes';
-import avat from '../images/avat.png';
-import lupa from '../images/lupa.png';
+import avat from '../images/icone-perfil.svg';
+import lupa from '../images/icone_pesquiar.svg';
 import SearchBar from './SearchBar';
-import imgHeader from '../images/imgHeader.png';
+import back from '../images/Arrow.svg';
+// import imgHeader from '../images/imgHeader.png';
+import logoHeader from '../images/tasty.png';
 import '../style/Header.css';
 
 export default function Header() {
@@ -17,9 +19,20 @@ export default function Header() {
     <header className="header">
       <div className="header_div">
         <div className="header_div_title">
-          <img src={ imgHeader } alt="imagem logo header" />
+        <button
+          type="button"
+          className="back-btn"
+          onClick={ () => {
+            history.goBack();
+          } }>
+            <img
+              src={ back }
+              alt="search icon"
+                  />
+          </button>
           <h4 data-testid="page-title" className="header_title">{title}</h4>
         </div>
+          <img src={ logoHeader } className="header_logo" alt="imagem logo header" />
         <div className="header_div_btn">
           <button
             className="header_btn"
@@ -34,11 +47,6 @@ export default function Header() {
               alt="profile icon"
             />
           </button>
-          <button
-          type="button"
-          onClick={ () => {
-            history.goBack();
-          } }>Back</button>
           {
             (title === 'Done Recipes'
         || title === 'Favorite Recipes'
@@ -59,7 +67,9 @@ export default function Header() {
                   />
                 </button>
               )
+
           }
+
         </div>
       </div>
       {search

@@ -1,17 +1,24 @@
+:root {
+
+  --header-color: #5eaa2e;
+
+  --icon-color: #33571c;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .header {
+  background: var(--header-color);
   display: flex;
   flex-direction: column;
-  width: 100vh;
+  width: 100vw;
 }
 
 .header_div {
   align-items: center;
-  background: #fcdc36;
   display: flex;
   height: 10vh;
   justify-content: space-between;
@@ -27,15 +34,15 @@
 }
 
 .header_div_title img {
+  height: 50px;
   margin-left: 12px;
 
 }
 
-
 .header_title {
   align-items: baseline;
-  color: #41197f;
-  font-size: 1.3em;
+  color: var(--icon-color);
+  font-size: 1.1em;
   font-weight: 900;
   justify-items: center;
   letter-spacing: 0.105em;
@@ -46,30 +53,48 @@
   width: 60px;
 }
 
+.header_logo {
+  width: 30vw;
+
+}
+
 
 .header_btn {
-  background-color: #fcdc36;
+  background-color: var(--header-color);
   border: none;
   margin-right: 12px;
 }
 
+.back-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.back-btn img {
+  width: 20px;
+}
+
+.header_btn img {
+  color: white;
+}
+
 .search {
-  align-items: center;
   display: flex;
-  flex-direction: column;
   height: 120px;
   justify-content: center;
-  margin-top: 15px;
   width: 100vw;
+
 }
 
 .search_background {
   align-items: center;
-  background-color: #41197f;
+  background-color: white;
+  border: 1px solid #b1b1b1;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   width: 90vw;
+
 
 }
 
@@ -87,7 +112,7 @@
 }
 
 .search_input::placeholder {
-  color: #797d86;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 1em;
   font-style: normal;
@@ -113,7 +138,7 @@
 
 .search_div_radio label {
   align-items: center;
-  color: white;
+  color: #505760;
   font-family: Epilogue , serif;
   font-size: 12px;
   font-style: normal;
@@ -124,7 +149,7 @@
 }
 
 .search_radio {
-  accent-color: #fcc436;
+  accent-color: #505760;
   margin-left: 3px;
   vertical-align: middle;
 
@@ -132,12 +157,12 @@
 
 .search_btn {
   align-items: center;
-  background: #fcc436;
+  background: var(--header-color);
   border: none;
   border-radius: 5px;
   color: white;
   font-family: Epilogue , serif;
-  font-size: 1em;
+  font-size: 0.7em;
   font-style: normal;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -146,7 +171,24 @@
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
-  width: 60vw;
+  width: 30vw;
 
+}
+
+@media screen  and ( min-width : 1200px ) {
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .header_logo {
+    width: 10vw;
+
+  }
+
+  .header_btn {
+    width: 35px;
+  }
 }
 
