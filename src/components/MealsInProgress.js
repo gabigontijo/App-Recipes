@@ -55,13 +55,26 @@ export default function MealsInProgress() {
     alcoholicOrNot: '',
     name: meal.strMeal,
     image: meal.strMealThumb,
-    doneDate: inDate.toISOString(),
+    doneDate: [inDate.toISOString()],
     tags: ((meal.strTags !== null && meal.strTags) ? meal.strTags.split(',') : []),
   };
 
   const handleBtnFinalizar = () => {
     const doneRecipe = JSON.parse(localStorage.getItem('doneRecipes') || '[]');
-    saveDoneRecipesLocalStorage([...doneRecipe, saveLocalStorage]);
+    let find = false;
+    for(let recipe of doneRecipe){
+      if(recipe.id === saveLocalStorage.id){
+        recipe.doneDate.push(saveLocalStorage.doneDate[0])
+        find = true;
+      }
+    }
+
+    if(find){
+      saveDoneRecipesLocalStorage(doneRecipe);
+    } else{
+      saveDoneRecipesLocalStorage([...doneRecipe, saveLocalStorage]);
+    }
+
     filterRecipeDone();
     history.push('/done-recipes');
   };
