@@ -28,10 +28,10 @@ export default function Drinks() {
       filter.className = '';
     }
     target.className = 'filterSelected';
-    if(target.value === 'All'){
+    if(listFilters[0].alt === 'all'){
       setRequestDrink([]);
     }else {
-      requestDrinkBySelectedFilter(target.value)
+      requestDrinkBySelectedFilter(listFilters[0].alt)
       .then((drink) => setRequestDrink(drink.drinks));
     }
   };
@@ -77,9 +77,10 @@ export default function Drinks() {
 
           </button>
         </div>
+        <div  className="drinks_cards">
         {(requestDrink.length > 1)
           ? requestDrink.slice(0, TWELVE).map((drink, index) => (
-            <div key={ drink.idDrink } data-testid={ `${index}-recipe-card` } className="drinks_cards">
+            <div key={ drink.idDrink } data-testid={ `${index}-recipe-card` } className="drinks_card">
               <NavLink to="/drinks"  key={`${index}-link` }>
                 <img
                   src={ drink.strDrinkThumb }
@@ -92,6 +93,7 @@ export default function Drinks() {
               </NavLink>
             </div>
           )) : <Recipes />}
+          </div>
       </div>
       <div className="footer_space"></div>
       <Footer />

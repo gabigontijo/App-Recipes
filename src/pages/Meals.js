@@ -26,14 +26,16 @@ export default function Meals() {
 
   const submitFilter = ({ target }) => {
     const listFilters = target.parentElement.children;
+    console.log(listFilters[0].alt);
+    console.log(target.value);
     for(let filter of listFilters) {
       filter.className = '';
     }
     target.className = 'filterSelected';
-    if(target.value === 'All'){
+    if(listFilters[0].alt === 'all'){
       setRequestMeal([]);
     }else {
-      requestMealBySelectedFilter(target.value)
+      requestMealBySelectedFilter(listFilters[0].alt)
       .then((meal) => setRequestMeal(meal.meals));
     }
   };
