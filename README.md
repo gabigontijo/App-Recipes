@@ -1,4 +1,4 @@
-  Nesse projeto,fui capaz de:
+  Nesse projeto fui capaz de:
 
   - Utilizar _Redux_ para gerenciar estado
   - Utilizar a biblioteca _React-Redux_
